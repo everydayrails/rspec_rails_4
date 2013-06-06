@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contacts</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= nav_bar brand: "BigCo, Inc." do %>
+    <% menu_group do %>
+        <%= menu_item "Home", root_path %>
+        <%= menu_item "About Us", '#' %>
+        <%= menu_item "Contact", '#' %>
+    <% end %>
+    <% menu_group :pull => :right do %>
+      <% if current_user %>
+        <% if can? :manage, User %>
+          <%= menu_item 'Users', users_path %>
+        <% end %>
+        <%= menu_item 'Log Out', logout_path %>
+      <% else %>
+        <%= menu_item 'Log In', new_session_path %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <div class="container">
+    <%= bootstrap_flash %>
+  </div>
+
+  <div class="container">
+
+    <div class="btn-group">
+      <% ('A'..'Z').each do |letter| %>
+        <%= link_to_unless_current letter, contacts_path(letter: letter), class: 'btn' %>
+      <% end %>
+      <%= link_to 'All', contacts_path, class: 'btn' %>
+    </div>
+
+    <%= yield %>
+  </div>
+
+</body>
+</html>

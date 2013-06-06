@@ -1,0 +1,40 @@
+<h1>Contacts</h1>
+
+<% if not @contacts.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <% if can? :manage, Contact.new %>
+          <th></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr>
+          <td><%= link_to contact.name, contact %></td>
+          <td><%= contact.email %></td>
+          <% if can? :manage, Contact.new %>
+            <td style="text-align:right;">
+              <%= link_to 'Edit', edit_contact_path(contact), class: 'btn btn-mini' %>
+              <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    No contacts found.
+  </p>
+<% end %>
+
+<div class="form-actions">
+  <% if can? :manage, Contact.new %>
+    <%= link_to 'New Contact', new_contact_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -1,0 +1,18 @@
+<h1>Users</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Email</th>
+    <th>Admin?</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %>
+      <td><%= user.admin? %>
+    </tr>
+  <% end %>
+</table>
+
+<div class="form-actions">
+  <%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
+</div>

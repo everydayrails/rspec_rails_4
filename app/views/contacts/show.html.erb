@@ -1,0 +1,24 @@
+<h1><%= @contact.name %></h1>
+
+<p>
+  <%= @contact.email %>
+</p>
+
+<% unless @contact.phones.empty? %>
+  <h2>Phones</h2>
+
+  <ul>
+    <% @contact.phones.each do |phone| %>
+      <li>
+        <%= phone.phone_type %>
+        <%= phone.phone %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if can? :edit, @contact %>
+  <div class="form-actions">
+    <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary' %>
+  </div>
+<% end %>
