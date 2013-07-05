@@ -17,7 +17,7 @@
   </ul>
 <% end %>
 
-<% if can? :edit, @contact %>
+<% if current_user %>
   <div class="form-actions">
     <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary' %>
   </div>
