@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate
-  load_and_authorize_resource
+  before_action :authenticate
+  before_action :can_administer?, except: [ :index ]
 
   def index
     @users = User.all
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
+      params[:user].delete :admin unless current_user.try(:admin?)
       params.require(:user).permit(:email, :password, :password_confirmation, :admin)
     end
 end
