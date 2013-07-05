@@ -13,6 +13,8 @@
   <% end %>
 </table>
 
-<div class="form-actions">
-  <%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
-</div>
+<% if administrator? %>
+  <div class="form-actions">
+    <%= link_to 'New User', new_user_path, class: 'btn btn-primary' %>
+  </div>
+<% end %>
