@@ -6,7 +6,7 @@
       <tr>
         <th>Name</th>
         <th>Email</th>
-        <% if can? :manage, Contact.new %>
+        <% if administrator? %>
           <th></th>
         <% end %>
       </tr>
@@ -17,7 +17,7 @@
         <tr>
           <td><%= link_to contact.name, contact %></td>
           <td><%= contact.email %></td>
-          <% if can? :manage, Contact.new %>
+          <% if administrator? %>
             <td style="text-align:right;">
               <%= link_to 'Edit', edit_contact_path(contact), class: 'btn btn-mini' %>
               <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' %>
@@ -34,7 +34,7 @@
 <% end %>
 
 <div class="form-actions">
-  <% if can? :manage, Contact.new %>
+  <% if administrator? %>
     <%= link_to 'New Contact', new_contact_path, class: 'btn btn-primary' %>
   <% end %>
 </div>
