@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, alert: 'Please log in first' if current_user.nil?
   end
 
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+  def can_administer?
+    redirect_to root_url, alert: 'Access denied.' unless administrator?
   end
 
   private
@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def administrator?
+    current_user && current_user.admin?
+  end
+
+  helper_method :administrator?
 end
