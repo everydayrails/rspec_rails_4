@@ -16,7 +16,7 @@
     <% end %>
     <% menu_group :pull => :right do %>
       <% if current_user %>
-        <% if can? :manage, User %>
+        <% if administrator? %>
           <%= menu_item 'Users', users_path %>
         <% end %>
         <%= menu_item 'Log Out', logout_path %>
