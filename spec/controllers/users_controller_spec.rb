@@ -21,12 +21,21 @@ describe UsersController do
 
   describe 'user access' do
     before :each do
-      session[:user_id] = create(:user).id
+      @user = create(:user)
+      session[:user_id] = @user.id
     end
 
-    it "GET#index denies access" do
-      get :index
-      expect(response).to redirect_to root_url
+    describe 'GET#index' do
+      it "collects users into @users" do
+        user = create(:user)
+        get :index
+        expect(assigns(:users)).to match_array [@user,user]
+      end
+
+      it "renders the :index template" do
+        get :index
+        expect(response).to render_template :index
+      end
     end
 
     it "GET#new denies access" do
