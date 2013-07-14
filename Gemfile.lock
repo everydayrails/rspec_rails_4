@@ -159,7 +159,7 @@ DEPENDENCIES
   jquery-rails
   launchy (~> 2.3.0)
   rails (= 4.0.0)
-  rspec-rails (~> 2.14.0.rc1)
+  rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3
