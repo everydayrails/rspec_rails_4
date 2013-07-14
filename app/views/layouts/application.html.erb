@@ -9,12 +9,12 @@
 <body>
 
   <%= nav_bar brand: "BigCo, Inc." do %>
-    <% menu_group do %>
+    <%= menu_group do %>
         <%= menu_item "Home", root_path %>
-        <%= menu_item "About Us", '#' %>
+        <%= menu_item "About Us", '#about_us', data: {toggle: 'modal' } %>
         <%= menu_item "Contact", '#' %>
     <% end %>
-    <% menu_group :pull => :right do %>
+    <%= menu_group :pull => :right do %>
       <% if current_user %>
         <% if administrator? %>
           <%= menu_item 'Users', users_path %>
@@ -41,6 +41,11 @@
 
     <%= yield %>
   </div>
+
+  <%= modal_dialog :id => "about_us",
+    :header => { show_close: true, dismiss: 'modal', title: 'About BigCo' },
+    :body   => 'BigCo produces the finest widgets in all the land.',
+    :footer => content_tag(:button, 'Close', class: 'btn btn-primary', data: { dismiss: 'modal'}, aria: { hidden: true }) %>
 
 </body>
 </html>
