@@ -27,6 +27,9 @@ Spork.prefork do
 
     # Include Factory Girl syntax to simplify calls to factories
     config.include FactoryGirl::Syntax::Methods
+
+    config.filter_run focus: true
+    config.filter_run_excluding slow: true
   end
 end
 

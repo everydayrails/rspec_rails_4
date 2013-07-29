@@ -12,6 +12,7 @@
     <%= menu_group do %>
         <%= menu_item "Home", root_path %>
         <%= menu_item "About Us", '#about_us', data: {toggle: 'modal' } %>
+        <%= menu_item "News", news_releases_path %>
         <%= menu_item "Contact", '#' %>
     <% end %>
     <%= menu_group :pull => :right do %>
