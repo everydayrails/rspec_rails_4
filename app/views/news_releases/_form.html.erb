@@ -1,0 +1,19 @@
+<%= form_for(@news_release) do |f| %>
+  <div class="form-inputs">
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :released_on, 'Date' %><br>
+      <%= f.text_field :released_on %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, class: 'btn btn-primary' %>
+  </div>
+<% end %>
