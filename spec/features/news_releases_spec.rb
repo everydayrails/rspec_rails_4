@@ -7,6 +7,7 @@ feature "News releases" do
       sign_in(user)
       visit root_path
       click_link "News"
+
       expect(page).to_not have_content "BigCo switches to Rails"
       click_link "Add News Release"
 
@@ -23,6 +24,19 @@ feature "News releases" do
   end
 
   context "as a guest" do
-    scenario "reads a news release"
+    scenario "reads a news release" do
+      pending "You write this one!"
+      visit root_path
+      click_link "News"
+
+      expect(page).to_not have_content
+        "Today, BigCo's CFO announced record growth."
+      expect(page).to_not have_content 'Add News Release'
+
+      click_link "2013-08-01: Record profits for BigCo!"
+
+      expect(page).to have_content
+        "Today, BigCo's CFO announced record growth."
+    end
   end
 end
