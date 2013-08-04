@@ -1,3 +1,5 @@
+**Looking for the Rails 3.2 version?** Please see <https://github.com/ruralocity/everyday_rails_rspec_rails_3_2>.
+
 Sample Rails 4.0.x application for [Everyday Rails Testing with RSpec: A Practical Approach to Test-driven Development](https://leanpub.com/everydayrailsrspec) by Aaron Sumner. This repository demonstrates incremental testing of an existing application, starting with an untested codebase and working through model, controller, and feature specs.
 
 Each chapter's progress has a specific branch in this repository. See chapter 1 of the book for details.
