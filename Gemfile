@@ -65,4 +65,4 @@ group :test do
   gem "shoulda-matchers", "~> 2.2.0"
 end
 
-gem "twitter-bootstrap-rails", "~> 2.2.7"
+gem "twitter-bootstrap-rails", "~> 2.2.8"
