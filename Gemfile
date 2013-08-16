@@ -44,4 +44,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "twitter-bootstrap-rails", "~> 2.2.7"
+gem "twitter-bootstrap-rails", "~> 2.2.8"
