@@ -57,4 +57,4 @@ group :test do
   gem "selenium-webdriver", "~> 2.33.0"
 end
 
-gem "twitter-bootstrap-rails", "~> 2.2.7"
+gem "twitter-bootstrap-rails", "~> 2.2.8"
