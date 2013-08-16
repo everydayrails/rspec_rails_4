@@ -16,10 +16,10 @@ describe ContactsController do
   let(:invalid_attributes) { attributes_for(:invalid_contact) }
 
   before :each do
-    Contact.stub(:persisted?).and_return(true)
-    Contact.stub(:order).with('lastname, firstname').and_return([contact])
-    Contact.stub(:find).with(contact.id.to_s).and_return(contact)
-    contact.stub(:save).and_return(true)
+    allow(Contact).to receive(:persisted?).and_return(true)
+    allow(Contact).to receive(:order).with('lastname, firstname').and_return([contact])
+    allow(Contact).to receive(:find).with(contact.id.to_s).and_return(contact)
+    allow(contact).to receive(:save).and_return(true)
   end
 
   shared_examples("public access to contacts") do
@@ -39,7 +39,7 @@ describe ContactsController do
 
     describe 'GET #show' do
       before :each do
-        Contact.stub(:find).with(contact.id.to_s).and_return(contact)
+        allow(Contact).to receive(:find).with(contact.id.to_s).and_return(contact)
         get :show, id: contact
       end
 
@@ -121,7 +121,7 @@ describe ContactsController do
     describe 'PATCH #update' do
       context "valid attributes" do
         it "located the requested @contact" do
-          contact.stub(:update).with(valid_attributes.stringify_keys) { true }
+          allow(contact).to receive(:update).with(valid_attributes.stringify_keys) { true }
           patch :update, id: contact, contact: valid_attributes
           expect(assigns(:contact)).to eq(contact)
         end
@@ -134,7 +134,7 @@ describe ContactsController do
 
       context "invalid attributes" do
         before :each do
-          contact.stub(:update).with(invalid_attributes.stringify_keys) { false }
+          allow(contact).to receive(:update).with(invalid_attributes.stringify_keys) { false }
           patch :update, id: contact, contact: invalid_attributes
         end
 
@@ -154,7 +154,7 @@ describe ContactsController do
 
     describe 'DELETE destroy' do
       before :each do
-        contact.stub(:destroy).and_return(true)
+        allow(contact).to receive(:destroy).and_return(true)
         delete :destroy, id: contact
       end
 
@@ -170,7 +170,7 @@ describe ContactsController do
 
   describe "admin access" do
     before :each do
-      controller.stub(:current_user).and_return(admin)
+      allow(controller).to receive(:current_user).and_return(admin)
     end
 
     it_behaves_like "public access to contacts"
@@ -180,7 +180,7 @@ describe ContactsController do
 
   describe "user access" do
     before :each do
-      controller.stub(:current_user).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
     end
 
     it_behaves_like "public access to contacts"
