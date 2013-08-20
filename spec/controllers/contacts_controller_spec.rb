@@ -139,11 +139,11 @@ describe ContactsController do
         end
 
         it "locates the requested @contact" do
-          expect(assigns(:contact)).to eq(contact)
+          expect(assigns(:contact)).to eq contact
         end
 
         it "does not change @contact's attributes" do
-          expect(assigns[:contact]).to_not be_valid
+          expect(assigns[:contact].attributes).to eq contact.attributes
         end
 
         it "re-renders the edit method" do
