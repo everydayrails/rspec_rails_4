@@ -54,7 +54,7 @@ group :test do
   gem "capybara", "~> 2.1.0"
   gem "database_cleaner", "~> 1.0.1"
   gem "launchy", "~> 2.3.0"
-  gem "selenium-webdriver", "~> 2.33.0"
+  gem "selenium-webdriver", "~> 2.35.1"
 end
 
 gem "twitter-bootstrap-rails", "~> 2.2.8"
