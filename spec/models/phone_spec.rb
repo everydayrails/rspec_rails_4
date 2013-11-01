@@ -4,7 +4,7 @@ describe Phone do
   it "does not allow duplicate phone numbers per contact" do
     contact = Contact.create(firstname: 'Joe', lastname: 'Tester',
       email: 'joetester@example.com')
-    home_phone = contact.phones.create(phone_type: 'home',
+    contact.phones.create(phone_type: 'home',
       phone: '785-555-1234')
     mobile_phone = contact.phones.build(phone_type: 'mobile',
       phone: '785-555-1234')
