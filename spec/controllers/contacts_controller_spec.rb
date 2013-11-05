@@ -152,7 +152,7 @@ describe ContactsController do
       end
     end
 
-    describe 'DELETE destroy' do
+    describe 'DELETE #destroy' do
       before :each do
         allow(contact).to receive(:destroy).and_return(true)
         delete :destroy, id: contact
