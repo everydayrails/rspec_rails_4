@@ -2,17 +2,17 @@ require 'spec_helper'
 
 describe UsersController do
   describe 'guest access' do
-    it "GET#index redirects to the login form" do
+    it "GET #index redirects to the login form" do
       get :index
       expect(response).to redirect_to login_url
     end
 
-    it "GET#new redirects to the login form" do
+    it "GET #new redirects to the login form" do
       get :new
       expect(response).to redirect_to login_url
     end
 
-    it "POST#create redirects to the login form" do
+    it "POST #create redirects to the login form" do
       post :create, user: attributes_for(:user)
       expect(response).to redirect_to login_url
     end
@@ -25,7 +25,7 @@ describe UsersController do
       session[:user_id] = @user.id
     end
 
-    describe 'GET#index' do
+    describe 'GET #index' do
       it "collects users into @users" do
         user = create(:user)
         get :index
@@ -38,12 +38,12 @@ describe UsersController do
       end
     end
 
-    it "GET#new denies access" do
+    it "GET #new denies access" do
       get :new
       expect(response).to redirect_to root_url
     end
 
-    it "POST#create denies access" do
+    it "POST #create denies access" do
       post :create, user: attributes_for(:user)
       expect(response).to redirect_to root_url
     end
@@ -55,7 +55,7 @@ describe UsersController do
       session[:user_id] = @admin.id
     end
 
-    describe 'GET#index' do
+    describe 'GET #index' do
       it "collects users into @users" do
         user = create(:user)
         get :index
@@ -68,7 +68,7 @@ describe UsersController do
       end
     end
 
-    describe 'GET#new' do
+    describe 'GET #new' do
       it "sets up a new, empty user" do
         get :new
         expect(assigns(:user)).to be_a_new(User)
@@ -80,7 +80,7 @@ describe UsersController do
       end
     end
 
-    describe 'POST#create' do
+    describe 'POST #create' do
       context "with valid attributes" do
         it "adds the user" do
           expect{
