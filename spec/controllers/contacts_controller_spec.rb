@@ -32,7 +32,7 @@ describe ContactsController do
         expect(assigns(:contacts)).to match_array [contact]
       end
 
-      it "renders the :index view" do
+      it "renders the :index template" do
         expect(response).to render_template :index
       end
     end
