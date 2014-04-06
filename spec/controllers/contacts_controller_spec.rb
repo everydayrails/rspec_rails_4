@@ -95,7 +95,7 @@ describe ContactsController do
         end
 
         it "creates a new contact" do
-          expect(Contact.exists?(assigns[:contact])).to be_true
+          expect(Contact.exists?(assigns[:contact])).to be_truthy
         end
 
         it "redirects to the new contact" do
@@ -109,7 +109,7 @@ describe ContactsController do
         end
 
         it "does not save the new contact" do
-          expect(Contact.exists?(contact)).to be_false
+          expect(Contact.exists?(contact)).to be_falsey
         end
 
         it "re-renders the new method" do
@@ -159,7 +159,7 @@ describe ContactsController do
       end
 
       it "deletes the contact" do
-        expect(Contact.exists?(contact)).to be_false
+        expect(Contact.exists?(contact)).to be_falsey
       end
 
       it "redirects to contacts#index" do

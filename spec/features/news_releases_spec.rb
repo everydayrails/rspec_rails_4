@@ -25,7 +25,7 @@ feature "News releases" do
 
   context "as a guest" do
     scenario "reads a news release" do
-      pending "You write this one!"
+      skip "You write this one!"
       visit root_path
       click_link "News"
 

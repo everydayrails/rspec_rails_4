@@ -27,6 +27,9 @@ Spork.prefork do
 
     # Include Factory Girl syntax to simplify calls to factories
     config.include FactoryGirl::Syntax::Methods
+
+    # Raise exceptions on RSpec 2.99 deprecation warnings
+    # config.raise_errors_for_deprecations!
   end
 end
 
