@@ -11,8 +11,7 @@ describe Phone do
     mobile_phone = build(:mobile_phone,
       contact: contact,
       phone: '785-555-1234')
-    mobile_phone.valid?
-    expect(mobile_phone.errors[:phone].size).to eq(1)
+    expect(mobile_phone.errors_on(:phone).size).to eq(1)
   end
 
   it "does not allow duplicate phone numbers per contact (collection_matcher)" do
